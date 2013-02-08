@@ -20,7 +20,7 @@ elif [ "$SERVICE" == "vsftpd" ]; then
 fi 
   
 #Email address to notify
-EMAIL="chiders@gmail.com";
+EMAIL="";
 
 #If the status of the service is running it will return a PID, so check that
 if service $SERVICE status | grep "$TOGREP"
