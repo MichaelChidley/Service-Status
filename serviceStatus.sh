@@ -11,14 +11,21 @@
 #Grab the first argument so this script is universal 
 SERVICE=$1
 
+if [ "$SERVICE" == "apache2" ]; then
+        TOGREP="pid"
+elif [ "$SERVICE" == "mysql" ]; then
+        TOGREP="start/running"
+elif [ "$SERVICE" == "vsftpd" ]; then
+        TOGREP="start/running"
+fi 
+  
 #Email address to notify
-EMAIL="";
+EMAIL="chiders@gmail.com";
 
 #If the status of the service is running it will return a PID, so check that
-if service $SERVICE status | grep "pid"
+if service $SERVICE status | grep "$TOGREP"
 then
         echo ""
-        exit
 
 #if it is not found, initiate a restart of the service, and notify email address of the result
 else
